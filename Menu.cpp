@@ -110,20 +110,22 @@ bool Menu::authentication() {
     string enterPass;
 
     if (!passwordManager.checkPasswordAvailability()) {
-        cout << "There is no stored password, please set a new password." << endl;
+        cout << "There is no stored password. Please set a new password." << endl;
         passwordManager.setPassword();
         return true;
     }
+
 
     cout << "Please enter your password:" << endl;
     cin.ignore();
     getline(cin, enterPass);
 
+
     if (passwordManager.getPassword(enterPass)) {
-        cout << "Success!!" << endl;
+        cout << "Success!" << endl;
         return true;
     } else {
-        cout << "Failed, Please try again." << endl;
+        cout << "Failed. Please try again." << endl;
         return false;
     }
 }
