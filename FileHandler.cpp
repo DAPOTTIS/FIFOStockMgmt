@@ -4,6 +4,7 @@
 
 string name = "stock.csv";
 
+/*  Save to file function loops through the queue thats passed in to add entries to a csv   */
 void FileHandler::saveToFile(Queue* stock) {
     ofstream output(name);
     if(output.is_open()) {
@@ -15,7 +16,10 @@ void FileHandler::saveToFile(Queue* stock) {
     }
 }
 
-
+/*  Load from file uses a stringstream to parse one line at a time, then using getlines and
+ *  with a delimiter we feed a temporary node each one of its fields (converted to their approriate types).
+ *  Result is then enqueued onto the queue we return.
+ */
 Queue FileHandler::loadFromFile() {
     ifstream input(name, ios::app);
     Queue stock;
