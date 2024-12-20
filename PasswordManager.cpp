@@ -10,8 +10,9 @@
 
 using namespace std;
 
-void PasswordManager::setPassword(string newPassword) {
+void PasswordManager::setPassword() {
     FileHandler fileHandler;
+    string newPassword;
     string pass1, pass2;
     bool doubleCheck = false;
     char choice;

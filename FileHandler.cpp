@@ -47,5 +47,8 @@ Queue FileHandler::loadFromFile() {
     return stock;
 }
 
-void FileHandler::setPassword(string) {
+void FileHandler::setPassword(string password) {
+    ofstream createPass("password.txt",ios::out);
+    createPass << password;
+    createPass.close();
 }

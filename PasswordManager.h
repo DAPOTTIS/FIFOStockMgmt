@@ -14,7 +14,7 @@ class PasswordManager
     string password;
 public:
     bool getPassword(const string&);
-    void setPassword(string newPassword);
+    void setPassword();
     bool checkPasswordAvailability();
 };
 

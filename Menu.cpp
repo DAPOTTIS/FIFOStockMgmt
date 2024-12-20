@@ -1,6 +1,6 @@
 #include <iostream>
+#include "ClearScreen.h"
 #include "Menu.h"
-#include "FileHandler.h"
 #include "PasswordManager.h"
 
 using namespace std;
@@ -10,10 +10,9 @@ void Menu::displayMenu() {
          << "__________________________" << endl
          << "ADD STOCK       [1]" << endl
          << "VIEW STOCK      [2]" << endl
-         << "EDIT STOCK      [3]" << endl
-         << "DELETE STOCK    [4]" << endl
-         << "EDIT PASSWORD   [5]" << endl
-         << "EXIT            [6]" << endl;
+         << "DELETE STOCK    [3]" << endl
+         << "EDIT PASSWORD   [4]" << endl
+         << "EXIT            [5]" << endl;
 }
 
 int Menu::getUserChoice() {
@@ -27,10 +26,59 @@ int Menu::getUserChoice() {
     return choice;
 }
 
-void Menu::displayQueue() {
-    //from Queue file
-
+bool Menu::handleUserChoice() {
+    int choice = getUserChoice();
+    Node* input = nullptr;
+    string error;
+    bool exit = false;
+    switch (choice) {
+        case 1:
+            input = new Node;
+            cout << "Enter the ID: ";
+            cin >> input->id;
+            cout << "Enter the name: ";
+            cin.ignore();
+            getline(cin, input->name);
+            cout << "Enter the category: ";
+            getline(cin, input->category);
+            cout << "Enter the quantity: ";
+            cin >> input->quantity;
+            cout << "Enter the price: ";
+            cin >> input->price;
+            cout << "Enter the date in: ";
+            cin.ignore();
+            getline(cin, input->dateIn);
+            cout << "Enter the date out: ";
+            getline(cin, input->dateOut);
+            addStock(input);
+            break;
+        case 2:
+            displayQueue();
+            break;
+        case 3:
+            removeStock();
+            break;
+        case 4:
+            if (authentication()) {
+                PasswordManager passwordManager;
+                passwordManager.setPassword("");
+            }
+            break;
+        case 5:
+            return false;
+        default:
+            error = "Invalid, Please try again\n";
+            break;
     }
+    system(CLEAR);
+    if(!error.empty())
+        cout << error;
+    return exit;
+}
+
+void Menu::displayQueue() {
+    stockQueue.display();
+}
 
 
 void Menu::addStock(Node* input) {
@@ -38,33 +86,19 @@ void Menu::addStock(Node* input) {
         cout << "Invalid, Please try again" << endl;
         return;
     }
+
     stockQueue.enqueue(input);
     cout << "Item added to stock successfully" << endl;
-
-    FileHandler fileHandler;
-    fileHandler.save(&stockQueue);
-    cout << "Item has been saved to the file" << endl;
 }
 
 void Menu::removeStock() {
-    FileHandler fileHandler;
-    Queue stockQueue = fileHandler.loadFromFile();
-
     if (stockQueue.isEmpty()) {
         cout << "The stock queue is empty" << endl;
         return;
     }
 
-    Node* removedItem = stockQueue.dequeue();
-    if (removedItem != nullptr) {
-        cout << "Item removed successfully: " << removedItem->name << endl;
-        delete removedItem;
-    } else {
-        cout << "Failed to remove item." << endl;
-    }
-
-    fileHandler.save(&stockQueue);
-    cout << "stock has been saved to the file" << endl;
+    stockQueue.dequeue();
+    cout << "Item removed successfully: " << endl;
 }
 
 bool Menu::authentication() {

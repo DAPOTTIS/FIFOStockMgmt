@@ -11,4 +11,5 @@ add_executable(FIFOStockMgmt main.cpp
         PasswordManager.cpp
         PasswordManager.h
         FileHandler.cpp
-        FileHandler.h)
+        FileHandler.h
+        ClearScreen.h)
