@@ -12,6 +12,8 @@ using namespace std;
 class FileHandler {
     void saveToFile(Node* node);
     void updateFile();
+
+public:
     void setPassword(string);
 };
 

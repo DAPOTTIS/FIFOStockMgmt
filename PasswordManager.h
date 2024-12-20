@@ -7,9 +7,11 @@ using namespace std;
 #define FIFOSTOCKMGMT_PASSWORDMANAGER_H
 
 
-class PasswordManager {
-string password;
+using namespace std;
 
+class PasswordManager
+{
+    string password;
 public:
     bool getPassword(const string&);
     void setPassword(string newPassword);
