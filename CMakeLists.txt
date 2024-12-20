@@ -1,10 +1,14 @@
-cmake_minimum_required(VERSION 3.29)
+cmake_minimum_required(VERSION 3.26)
 project(FIFOStockMgmt)
 
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(FIFOStockMgmt main.cpp
-        src/Queue.cpp
-        src/Queue.h
         Queue.cpp
-        Queue.h)
+        Queue.h
+        Menu.cpp
+        Menu.h
+        PasswordManager.cpp
+        PasswordManager.h
+        FilaHandler.cpp
+        FilaHandler.h)
