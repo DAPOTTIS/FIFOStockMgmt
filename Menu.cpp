@@ -19,7 +19,7 @@ void Menu::displayMenu() {
 int Menu::getUserChoice() {
     int choice;
     while (true) {
-        cout << "Please enter a number between 1 and 6: ";
+        cout << "Please enter a number between 1 and 6: "<< endl;
         cin >> choice;
         if (cin.fail()) {
             cin.clear();
