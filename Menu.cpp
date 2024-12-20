@@ -61,6 +61,8 @@ bool Menu::handleUserChoice() {
             break;
         case 3:
             removeStock();
+            cout << "Item first in stock has been removed.\n Please press any key to continue" << endl;
+            getchar();
             break;
         case 4:
             passwordManager.setPassword();
