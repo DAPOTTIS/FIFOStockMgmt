@@ -6,12 +6,16 @@
 int main() {
     Menu menu;
     system(CLEAR);
-    menu.authentication();
 
-    menu.displayMenu();
-    while(!menu.handleUserChoice()) {
-        menu.displayMenu();
-    }
+   while( menu.authentication()){
+       menu.displayMenu();
+       while(!menu.handleUserChoice()) {
+           menu.displayMenu();
+       }
+   }
+   if(!menu.authentication()){
+       menu.authentication();
+   }
 
     return 0;
 }

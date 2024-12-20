@@ -79,7 +79,7 @@ void PasswordManager::setPassword() {
 bool PasswordManager::getPassword(const string& pass) {
     ifstream passCheck("password.txt");
     getline(passCheck, password);
-    return pass == password; /* to check if the password entered is the
+    return (pass == password); /* to check if the password entered is the
     same as the one stored in the file */
 }
 

@@ -12,6 +12,7 @@ void Menu::displayMenu() {
          << "VIEW STOCK      [2]" << endl
          << "DELETE STOCK    [3]" << endl
          << "EDIT PASSWORD   [4]" << endl
+
          << "EXIT            [5]" << endl;
 }
 
@@ -23,6 +24,7 @@ int Menu::getUserChoice() {
         cout << "Invalid, Please enter another choice between 1 and 6: ";
         cin >> choice;
     }
+
     return choice;
 }
 
@@ -117,7 +119,7 @@ bool Menu::authentication() {
 
 
     cout << "Please enter your password:" << endl;
-    cin.ignore();
+//    cin.ignore(); heya bent el lazina de
     getline(cin, enterPass);
 
 
