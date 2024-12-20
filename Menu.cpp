@@ -12,7 +12,6 @@ void Menu::displayMenu() {
          << "VIEW STOCK      [2]" << endl
          << "DELETE STOCK    [3]" << endl
          << "EDIT PASSWORD   [4]" << endl
-
          << "EXIT            [5]" << endl;
 }
 
@@ -64,10 +63,7 @@ bool Menu::handleUserChoice() {
             removeStock();
             break;
         case 4:
-            if (authentication()) {
-                PasswordManager passwordManager;
-                passwordManager.setPassword();
-            }
+            passwordManager.setPassword();
             break;
         case 5:
             fileHandler.saveToFile(&stockQueue);
@@ -108,7 +104,6 @@ void Menu::removeStock() {
 }
 
 bool Menu::authentication() {
-    PasswordManager passwordManager;
     string enterPass;
 
     if (!passwordManager.checkPasswordAvailability()) {
