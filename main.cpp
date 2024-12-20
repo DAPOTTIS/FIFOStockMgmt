@@ -6,15 +6,17 @@
 int main() {
     Menu menu;
     system(CLEAR);
-
-   while( menu.authentication()){
-       menu.displayMenu();
+    bool trueUser;
+check:
+   while(menu.authentication()){
+       trueUser =true;
+     menu.displayMenu();
        while(!menu.handleUserChoice()) {
            menu.displayMenu();
        }
    }
-   if(!menu.authentication()){
-       menu.authentication();
+while(!trueUser){
+        goto check;
    }
 
     return 0;
