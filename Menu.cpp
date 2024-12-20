@@ -61,7 +61,8 @@ bool Menu::handleUserChoice() {
             break;
         case 3:
             removeStock();
-            cout << "Item first in stock has been removed.\n Please press any key to continue" << endl;
+            cout << "\nItem first in stock has been removed.\nPlease press any key to continue" << endl;
+            cin.ignore();
             getchar();
             break;
         case 4:
