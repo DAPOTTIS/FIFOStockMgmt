@@ -4,7 +4,7 @@
 
 string name = "stock.csv";
 
-/*  Save to file function loops through the queue thats passed in to add entries to a csv   */
+/*  Save to file function loops through the queue that's passed in to add entries to a csv   */
 void FileHandler::saveToFile(Queue* stock) {
     ofstream output(name);
     if(output.is_open()) {
