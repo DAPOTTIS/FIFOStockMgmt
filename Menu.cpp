@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ClearScreen.h"
 #include "Menu.h"
+#include <limits>
 #include "PasswordManager.h"
 
 using namespace std;
@@ -17,14 +18,19 @@ void Menu::displayMenu() {
 
 int Menu::getUserChoice() {
     int choice;
-    cout << "Please enter an option : " << endl;
-    cin >> choice;
-    while (choice < 1 || choice > 6) {
-        cout << "Invalid, Please enter another choice between 1 and 6: ";
+    while (true) {
+        cout << "Please enter a number between 1 and 6: ";
         cin >> choice;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<ptrdiff_t>::max(), '\n');
+            cout << "Invalid. Please enter a number between 1 and 6." << endl;
+        } else if (choice < 1 || choice > 6) {
+            cout << "Invalid. Please enter a number between 1 and 6." << endl;
+        } else {
+            return choice;
+        }
     }
-
-    return choice;
 }
 
 bool Menu::handleUserChoice() {
@@ -61,7 +67,8 @@ bool Menu::handleUserChoice() {
             break;
         case 3:
             removeStock();
-            cout << "Item first in stock has been removed.\n Please press any key to continue" << endl;
+            cout << "\nItem first in stock has been removed.\nPlease press any key to continue" << endl;
+            cin.ignore();
             getchar();
             break;
         case 4:
