@@ -1,19 +1,15 @@
-//
-// Created by Pierre on 20/12/2024.
-//
-#include <iostream>
-#include <string>
-#include "Queue.h"
-using namespace std;
 #ifndef FIFOSTOCKMGMT_FILAHANDLER_H
 #define FIFOSTOCKMGMT_FILAHANDLER_H
-
+#include <iostream>
+#include <string>
+#include <fstream>
+#include "Queue.h"
+using namespace std;
 
 class FileHandler {
-    void saveToFile(Node* node);
-    void updateFile();
-
 public:
+    void saveToFile(Queue*);
+    Queue loadFromFile();
     void setPassword(string);
 };
 

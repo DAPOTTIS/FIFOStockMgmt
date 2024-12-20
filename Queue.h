@@ -11,11 +11,9 @@ struct Node {
 };
 
 class Queue {
-    Node* front,* rear;
-
 public:
+    Node* front,* rear;
     void enqueue(Node *node);
-
     void dequeue();
     void display();
     Node* peek();
