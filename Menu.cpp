@@ -1,8 +1,5 @@
-//
-// Created by Pierre on 20/12/2024.
-//
 #include "Menu.h"
-
+using namespace std;
 void Menu::displayMenu() {
     cout << "\tMAIN MENU" << endl << "__________________________" <<
          endl << "ADD STOCK       [1]" << endl <<
@@ -15,15 +12,23 @@ void Menu::displayMenu() {
 
 int Menu::getUserChoice() {
     int choice;
+    cout << "Please enter an option : "<<endl;
     cin>>choice;
-
+    while (choice < 1 || choice > 6) {
+        cout << "Invalid,Please enter another choice between 1 and 6:";
+        cin>>choice;
+    }
+return choice;
 }
 
 void Menu::displayQueue() {
+    cout <<"Displaying the current stock in queue :"<<endl;
+    //n3mel implement hena ba2 men el queue
 
 }
 
 void Menu::addStock(Node *input) {
+    cout<<
 
 }
 
@@ -31,6 +36,9 @@ void Menu::removeStock() {
 
 }
 
-bool authentication(){
+bool Menu:: authentication(){
+    string password;
+    cout << "Please enter password : ";
+    cin >> password;
 
 }
