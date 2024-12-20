@@ -1,6 +1,3 @@
-//
-// Created by Pierre on 20/12/2024.
-//
 #include <string>
 using namespace std;
 #ifndef FIFOSTOCKMGMT_PASSWORDMANAGER_H

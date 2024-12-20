@@ -54,6 +54,9 @@ bool Menu::handleUserChoice() {
             break;
         case 2:
             displayQueue();
+            cin.ignore();
+            cout << "Press any key to continue" << endl;
+            getchar();
             break;
         case 3:
             removeStock();
@@ -61,11 +64,12 @@ bool Menu::handleUserChoice() {
         case 4:
             if (authentication()) {
                 PasswordManager passwordManager;
-                passwordManager.setPassword("");
+                passwordManager.setPassword();
             }
             break;
         case 5:
-            return false;
+            fileHandler.saveToFile(&stockQueue);
+            return true;
         default:
             error = "Invalid, Please try again\n";
             break;
@@ -107,7 +111,7 @@ bool Menu::authentication() {
 
     if (!passwordManager.checkPasswordAvailability()) {
         cout << "There is no stored password, please set a new password." << endl;
-        passwordManager.setPassword("");
+        passwordManager.setPassword();
         return true;
     }
 
