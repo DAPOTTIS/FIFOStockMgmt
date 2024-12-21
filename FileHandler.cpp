@@ -29,15 +29,15 @@ Queue FileHandler::loadFromFile() {
         stringstream ss(line);
         string field;
         getline(ss, field, ',');
-        node->id = stoi(field);
+        node->id = field;
         getline(ss, field, ',');
         node->name = field;
         getline(ss, field, ',');
         node->category = field;
         getline(ss, field, ',');
-        node->quantity = stoi(field);
+        node->quantity = field;
         getline(ss, field, ',');
-        node->price = stof(field);
+        node->price = field;
         getline(ss, field, ',');
         node->dateIn = field;
         getline(ss, field, ',');

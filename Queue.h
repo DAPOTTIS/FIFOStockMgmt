@@ -4,9 +4,7 @@
 #include <string>
 
 struct Node {
-    int id, quantity;
-    std::string dateIn, dateOut, category, name;
-    float price;
+    std::string dateIn, dateOut, category, name, id, quantity, price;
     Node* next;
 };
 
